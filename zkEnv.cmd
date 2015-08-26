@@ -1,5 +1,7 @@
 @echo off
-
+set JAVA_PATH=%JAVA_HOME%\bin\java
+IF "%JAVA_PATH% " == "\bin\java " set JAVA_PATH="java"
+echo using JAVA executable: %JAVA_PATH%
 set ZOO_HOME=%~dp0zookeeper
 set ZOO_LOG4J_PROP=INFO,CONSOLE
 set ZOO_LOG_DIR=%NODE_PATH%\log

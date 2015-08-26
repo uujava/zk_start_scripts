@@ -1,12 +1,12 @@
 setlocal
+@echo off
+set CFG_DIR=%1
+IF "%CFG_DIR% " == " " set CFG_DIR=SINGLE
 set NODE_BASE=%~dp0
-REM for %%x in (%*) do (
-set NODE_PATH=%NODE_BASE%%1
+set NODE_PATH=%NODE_BASE%%CFG_DIR%
 shift
 call %NODE_BASE%zkEnv.cmd
-echo on
-java "-Dzookeeper.log.dir=%ZOO_LOG_DIR%" "-Dzookeeper.root.logger=%ZOO_LOG4J_PROP%" -cp "%ZOO_CLASSPATH%" %ZOOMAIN% "%ZOO_CFG%"
-echo off
-REM )
+@echo on
+%JAVA_PATH% "-Dzookeeper.log.dir=%ZOO_LOG_DIR%" "-Dzookeeper.root.logger=%ZOO_LOG4J_PROP%" -cp "%ZOO_CLASSPATH%" %ZOOMAIN% "%ZOO_CFG%"
 endlocal
 
